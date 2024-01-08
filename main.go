@@ -8,7 +8,6 @@ import (
 	"math"
 	"math/rand"
 	"os"
-	"time"
 )
 
 var palette = []color.Color{color.White, color.Black}
@@ -19,8 +18,9 @@ const (
 )
 
 func main() {
-	rand.Seed(time.Now().UTC().UnixNano())
-	lissajous(os.Stdout)
+	file, _ := os.Create("out.gif")
+	lissajous(file)
+	file.Close()
 }
 
 func lissajous(out io.Writer) {
@@ -29,10 +29,10 @@ func lissajous(out io.Writer) {
 		res     = 0.001 // resolução angular
 		size    = 100   // canvas da imagem, cobre de [-size .. +size]
 		nframes = 64    // número de quadros da animação
-		delay   = 5     // tempo entre quadros em unidades de 10ms
+		delay   = 8     // tempo entre quadros em unidades de 10ms
 	)
 
-	freq := rand.ExpFloat64() * 3.0 // frequência relativa do oscilador y
+	freq := rand.Float64() * 3.0 // frequência relativa do oscilador y
 	anim := gif.GIF{LoopCount: nframes}
 	phase := 0.0 // diferença de fase
 
