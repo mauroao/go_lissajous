@@ -27,7 +27,7 @@ func lissajous(out io.Writer) {
 	const (
 		cycles  = 5     // número de revoluções completas do oscilador x
 		res     = 0.001 // resolução angular
-		size    = 100   // canvas da imagem, cobre de [-size .. +size]
+		size    = 50    // canvas da imagem, cobre de [-size .. +size]
 		nframes = 64    // número de quadros da animação
 		delay   = 8     // tempo entre quadros em unidades de 10ms
 	)
